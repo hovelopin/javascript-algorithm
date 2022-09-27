@@ -1,5 +1,5 @@
 const inputs = require("fs").readFileSync("./dev/stdin").toString().trim();
 
-const solution = () => {};
+const solution = (inputs) => {};
 
 console.log(solution(inputs));
