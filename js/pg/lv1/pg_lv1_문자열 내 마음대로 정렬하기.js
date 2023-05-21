@@ -1,15 +1,18 @@
+// 0시 30분 (시작) -> 0시 35분 (끝)
 function solution(strings, n) {
-  const arr = strings.sort((next, prev) => {
-    if (next[n] > prev[n]) return 1;
-    else if (next[n] < prev[n]) return -1;
-    // 주어진 문자가 같을 경우 문자열을 비교해 더 큰 문자열을 뒤로 보낸다.
-    else if (next[n] === prev[n]) {
-      if (next[n] > prev[n]) return 1;
-      if (next[n] < prev[n]) return -1;
-      return 0;
-    }
-  });
-  return arr;
+    // n번째 순서로 정렬을 하고 같을때만 사전순으로 앞선놈이 앞에 서있는게 기준
+    strings.sort((prev , next) => {
+        if(prev[n] > next[n]){
+            return 1;
+        }
+        if(prev[n] < next[n]){
+            return -1;
+        }
+
+        return prev > next ? 1 : -1;
+    })
+
+    return strings;
 }
 
-console.log("정답 : ", solution(["sun", "bed", "car"], 1));
+console.log("정답 : ", solution(["abce", "abcd", "cdx"], 2));
